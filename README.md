@@ -3,8 +3,8 @@
 This repository contains the QuickMergesort variants examined in the papers "QuickXsort -- A Fast Sorting Scheme in Theory and Practice" by Stefan Edelkamp, Armin Weiß and Sebastian Wild and "Worst-Case Efficient Sorting with QuickMergesort" by Stefan Edelkamp and Armin Weiß. 
 
 
-- For running time experiments with one single algorithm (the algorithm names are the file names of the \*.h++ files:
-	make <algorithm>.time
+- For running time experiments with one single algorithm (the algorithm names are the file names of the \*.h++ files):
+   - make \<algorithm\>.time
   
 - For running time and comparison measurements of "Worst-Case Efficient Sorting with QuickMergesort" (output  written to .csv file):
    - make undersamplingcomptest
