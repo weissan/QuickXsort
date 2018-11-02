@@ -122,7 +122,7 @@ compdata = r m i
 mqmsHybriddata = r a h
 
 mqmstypes = int Record Logint PointerRecord
-type =  Record PointerRecord Logint int Vector 
+type =  int Record PointerRecord Logint Vector 
 qXtypes =  int Logint PointerRecord
 # double Rational    double Rational 
 
