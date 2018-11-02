@@ -11,6 +11,7 @@
 #include <cmath>
 #include <assert.h>
 
+
 #ifndef SQRT_HYBRID
 #define SQRT_HYBRID
 #endif // SQRT_HYBRID

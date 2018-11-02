@@ -64,9 +64,18 @@ N_bc = 1024 2048 4096 8192 16384 32768 65536 131072 262144 524288 1048576 209715
 
 verysmallN = 1024 2048 4096 8192 16384 32768 65536 131072 262144 524288 1048576
 
+verylargeN = 33554432 67108864 134217728 268435456 536870912 1073741824 2147483648 4294967296 8589934592 17179869184 34359738368 68719476736 
+
 singlerepetitionQXN = 131072 196608 262144 393216 524288 786432 1048576
 
+denseN = 1048576 1123836 1204498 1290948 1383604 1482910 1589344 1703417 1825677 1956712 2097152 2247672 2408995 2581897 2767209 2965821 3178688 3406833 3651354 3913424 4194304 
+
+smalldenseN = 262144 280959 301124 322737 345901 370728 397336 425854 456419 489178 524288 561918 602249 645474 691802 741455 794672 851708 912838 978356 1048576 
+
 N_few =  1024 16384 131072 1048576 16777216 134217728
+
+fewseeds = 1419836757 1736079990 3049352726 138745579 3507014995 1211763785 2069625985 1791738544 901852307 3707813544 
+
 seeds = 1419836757 1736079990 3049352726 138745579 3507014995 1211763785 2069625985 1791738544 901852307 3707813544 2738501551 1359104479 4090736199 338537062 198114031 1793305874 932609687 109094632 719137151 3048484656 3784540045 1638271900 1974537596 4221393117 1375474640 1543833964 3478869777 2752787099 2507895769 3874234565 2051206898 3274687509 1186671856 2505935960 255060488 4226744669 2444449807 3358769604 1635000407 3920146827
 
 hundredseeds = 1419836757 1736079990 3049352726 138745579 3507014995 1211763785 2069625985 1791738544 901852307 3707813544 2738501551 1359104479 4090736199 338537062 198114031 1793305874 932609687 109094632 719137151 3048484656 3784540045 1638271900 1974537596 4221393117 1375474640 1543833964 3478869777 2752787099 2507895769 3874234565 2051206898 3274687509 1186671856 2505935960 255060488 4226744669 2444449807 3358769604 1635000407 3920146827 2571551238 1126363349 178227716 3477740041 2219924689 2981471014 4276900108 30479107 1949351857 1460248837 53014025 165225233 3416447845 890408661 300320738 2856513422 1893322240 1432585755 4062341515 3097406414 1798884608 1330510730 3899149452 1933692990 3705262070 1218249789 3848001977 4133388893 2238990247 499925814 561225270 3929456888 3438171099 3468296470 749452073 2617798902 1601935687 318690207 524356049 4252437271 2470077673 226799234 1073427801 2958598886 1372317703 254594514 613851155 2354859646 2762502478 37924386 1642692745 3964049201 2471987473 36737599 3146196209 2137029703 943854286 1333681903 313323716 520777759 
@@ -102,7 +111,7 @@ qXalgssmall = stl_stable_sort stl_gcc_new quickmerge_smaller_merge quickmerge_la
 
 singlerepetitionQXAlgs = quickmerge_no_sampling_larger_merge quickmerge_smaller_merge quickmerge_Reinhardt_mo3 quickmerge_larger_merge stl_gcc_new_pivot stl_gcc_new_no_is quickmerge_mosqrt
 
-mqmsalgorithms =  stl_stable_sort stl_gcc_new in_situ_merge quickmerge_worst_case_efficient_3_5_undersampling quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE_SKEW quickmerge_hybrid_mo3 wikisort stl_partial_sort 
+mqmsalgorithms =  stl_stable_sort stl_gcc_new in_situ_merge quickmerge_worst_case_efficient_3_5_undersampling quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE_SKEW quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE quickmerge_hybrid_mo3 wikisort stl_partial_sort 
 
 mqmsOnlyalgorithms = quickmerge_worst_case_efficient_3_5_WORST_CASE quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE_SKEW quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE quickmerge_worst_case_efficient_WORST_CASE quickmerge_worst_case_efficient quickmerge_worst_case_efficient_3_5 quickmerge_worst_case_efficient_3_5_undersampling
 
@@ -110,13 +119,13 @@ mqmsFewalgorithms = quickmerge_worst_case_efficient_3_5_undersampling quickmerge
 
 mqmsHybridalgorithms = stl_gcc_new stl_gcc_new_qms_intro quickmerge_hybrid_mo3
 
-qms_wc_skew_test_alg =  quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE_SKEW
+qms_wc_skew_test_alg =  quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE_SKEW quickmerge_worst_case_efficient_3_5_undersampling_WORST_CASE
 
 insertionSortSizes = 4 5 6 7 8 9 10 11 12 13 14 15 16 17 118 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 42 44 46 48 50 55 60 70 80 90 100
 
 insertionSortAlgs = quickmerge
 
-undersampling_sizes = 42 44 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 80
+undersampling_sizes = 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84
 
 insSortN = 16384 16777216
 
@@ -134,7 +143,8 @@ smalldata = i m w
 compdata = r m i
 mqmsHybriddata = r a h
 
-type =  int Vector Record Logint PointerRecord
+mqmstypes = int Record Logint PointerRecord
+type =  Record PointerRecord Logint int Vector 
 qXtypes =  int Logint PointerRecord
 # double Rational    double Rational 
 
@@ -456,6 +466,27 @@ mqmsFewtimecomptestManyN:
 		sed -i -e 's/ //g' results.mqmsFew.comp.csv ;\
 	done		
 
+	
+	
+mqmsAlgtimetesttypes:
+	@rm -f results.mqmsAlg.types.time.csv ; \
+	echo "algorithm,mode,parameter,type,size,time,partial_sort_count,repetitions" >> results.mqmsAlg.types.time.csv; \
+	for seed in $(hundredseeds) ; do \
+		for alg in $(mqmsalgorithms); do \
+			echo $$alg ; \
+			cp $$alg.h++ algorithm.h++ ; \
+			for t in $(mqmstypes) ; do \
+				echo $$t ; \
+				$(CXX) $(CXXFLAGS) -DNAME=$$alg -DTYPE=$$t -DTOFILE driver.cpp ; \
+				for n in $(N) ; do \
+					./a.out $$n r $$seed >> results.mqmsAlg.types.time.csv; \
+				done ; \
+			done ; \
+			rm -f ./a.out ; \
+			sed -i -e 's/ //g' results.mqmsAlg.types.time.csv ;\
+		done ;\
+	done
+	
 allAlgtimetest:
 	@for seed in $(seeds) ; do \
 		for alg in $(allalgorithms); do \
@@ -509,6 +540,38 @@ qXcomptest:
 		done ;\
 		sed -i -e 's/ //g' results.qX.comp.csv ;\
 	done
+	
+qXcomptestdense:
+	@rm -f results.qX.comp.dense.csv ; \
+	echo "algorithm,size,comp,per_n,per_nlogn,kappa" >> results.qX.comp.dense.csv; \
+	for seed in $(moreseeds) ; do \
+		for alg in $(qXalgsComp); do \
+			echo $$alg ; \
+			cp $$alg.h++ algorithm.h++ ; \
+			$(CXX) $(CXXFLAGS) -DNAME=$$alg -DMEASURE_COMPARISONS -DTOFILE driver.cpp ; \
+			for n in $(denseN) ; do \
+				./a.out $$n r $$seed >> results.qX.comp.dense.csv; \
+			done ; \
+			rm -f ./a.out ; \
+		done ;\
+		sed -i -e 's/ //g' results.qX.comp.dense.csv ;\
+	done
+	
+qXcomptestsmalldense:
+	@rm -f results.qX.comp.smalldense.csv ; \
+	echo "algorithm,size,comp,per_n,per_nlogn,kappa" >> results.qX.comp.smalldense.csv; \
+	for seed in $(moreseeds) ; do \
+		for alg in $(qXalgsComp); do \
+			echo $$alg ; \
+			cp $$alg.h++ algorithm.h++ ; \
+			$(CXX) $(CXXFLAGS) -DNAME=$$alg -DMEASURE_COMPARISONS -DTOFILE driver.cpp ; \
+			for n in $(smalldenseN) ; do \
+				./a.out $$n r $$seed >> results.qX.comp.smalldense.csv; \
+			done ; \
+			rm -f ./a.out ; \
+		done ;\
+		sed -i -e 's/ //g' results.qX.comp.smalldense.csv ;\
+	done
 
 qXtimetest:
 	@rm -f results.qX.time.csv ; \
@@ -528,20 +591,38 @@ qXtimetest:
 		sed -i -e 's/ //g' results.qX.time.csv ;\
 	done
 	
-qXtimetestsmall:
-	@rm -f results.qX.time.csv ; \
-	echo "algorithm,mode,parameter,type,size,time,partial_sort_count,repetitions" >> results.qX.time.csv; \
-	for seed in $(hundredseeds) ; do \
-		for alg in $(qXalgssmall); do \
+qXtimetestverylarge:
+	@rm -f results.qX.time.verylarge.csv ; \
+	echo "algorithm,mode,parameter,type,size,time,partial_sort_count,repetitions" >> results.qX.time.verylarge.csv; \
+	for seed in $(fewseeds) ; do \
+		for alg in $(qXalgs); do \
 			echo $$alg ; \
 			cp $$alg.h++ algorithm.h++ ; \
-			$(CXX) $(CXXFLAGS) -DNAME=$$alg -DTYPE=int -DTOFILE driver.cpp ; \
-			for n in $(smallN) ; do \
-				./a.out $$n r $$seed >> results.qX.time.csv; \
+			for t in $(qXtypes) ; do \
+				$(CXX) $(CXXFLAGS) -DNAME=$$alg -DTYPE=$$t -DTOFILE driver.cpp ; \
+				for n in $(verylargeN) ; do \
+					./a.out $$n r $$seed >> results.qX.time.verylarge.csv; \
+				done ; \
 			done ; \
 			rm -f ./a.out ; \
 		done ;\
-		sed -i -e 's/ //g' results.qX.time.csv ;\
+		sed -i -e 's/ //g' results.qX.time.verylarge.csv ;\
+	done
+	
+qXtimetestsmall:
+	@rm -f results.qX.time.int.csv ; \
+	echo "algorithm,mode,parameter,type,size,time,partial_sort_count,repetitions" >> results.qX.time.int.csv; \
+	for seed in $(hundredseeds) ; do \
+		for alg in $(qXalgs); do \
+			echo $$alg ; \
+			cp $$alg.h++ algorithm.h++ ; \
+			$(CXX) $(CXXFLAGS) -DNAME=$$alg -DTYPE=int -DTOFILE driver.cpp ; \
+			for n in $(N) ; do \
+				./a.out $$n r $$seed >> results.qX.time.int.csv; \
+			done ; \
+			rm -f ./a.out ; \
+		done ;\
+		sed -i -e 's/ //g' results.qX.time.int.csv ;\
 	done
 	
 	

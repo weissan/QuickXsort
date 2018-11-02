@@ -31,6 +31,7 @@
 
 
 #if ! defined(MAXSIZE)
+//#define MAXSIZE ((unsigned long long int)(1UL<<30))
 #define MAXSIZE (1024 * 1024 * 1024)
 #endif
 
@@ -456,8 +457,8 @@ int main(int argc, char** argv) {
 #endif
 #endif
 
-    unsigned int N = 15;
-    unsigned int inversions = 0;
+    unsigned long long int N = 15;
+    unsigned long long int inversions = 0;
     float ratio_unsorted = 0.1;
     unsigned long long int modulo = 2;
     unsigned long long int offset = 0;
@@ -599,7 +600,7 @@ int main(int argc, char** argv) {
     }
 
 
-    if ((unsigned long long int)N * sizeof(element) > ((unsigned long long int)1) << 31 || (typeid(element) == typeid(PointerRecord) && (unsigned long long int)N * 200 > ((unsigned long long int)1) << 31) || (typeid(element) == typeid(Logint) && (unsigned long long int)N * 200 > ((unsigned long long int)1) << 31))
+    if ((unsigned long long int)N * sizeof(element) > MAXSIZE || (typeid(element) == typeid(PointerRecord) && (unsigned long long int)N * 200 > MAXSIZE) || (typeid(element) == typeid(Logint) && (unsigned long long int)N * 200 > MAXSIZE))
         return 0;
 
 #if defined(MEASURE_MOVES)
@@ -629,7 +630,7 @@ int main(int argc, char** argv) {
 #endif
 
     unsigned long long int temp;
-    int elements = N;
+    unsigned long long int elements = N;
     unsigned long long int modulo_power_2 = 1 << ((unsigned int)ilogb(elements));
     unsigned long long int offset_zw = modulo_power_2 / 2;
 
@@ -680,7 +681,7 @@ int main(int argc, char** argv) {
         test_data_sorted[j].reserve(elements);
         switch (method) {
         case 'a':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i));
                 test_data_sorted[j].push_back(element(i));
             }
@@ -702,9 +703,9 @@ int main(int argc, char** argv) {
                     test_data[j][elements / 2 - 2 - k] = elements - 6 - 2 * k;
                 }
                 int next = elements - 2 * runlength - 5 - 1;
-                for (int k = 2; k < elements / 2 - runlength - 1; k++)
+                for (unsigned long long int k = 2; k < elements / 2 - runlength - 1; k++)
                     test_data[j][k] = next--;
-                for (int k = elements / 2 + 1; k < elements - 2 * runlength - 3; k++)
+                for (unsigned long long int k = elements / 2 + 1; k < elements - 2 * runlength - 3; k++)
                     test_data[j][k] = next--;
 
 
@@ -713,20 +714,20 @@ int main(int argc, char** argv) {
             }
             break;
 		case 'b':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 int el = random_generator() % 2;
                 test_data[j].push_back(element(el));
                 test_data_sorted[j].push_back(element(el));
             }
             break;
         case 'c':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(1));
                 test_data_sorted[j].push_back(element(1));
             }
             break;
         case 'd':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(elements - 1 - i));
                 test_data_sorted[j].push_back(element(elements - 1 - i));
             }
@@ -734,13 +735,13 @@ int main(int argc, char** argv) {
         case 'e':
         case 'f':
         case 'g':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i));
                 test_data_sorted[j].push_back(element(i));
             }
             for (int i = 0; i < elements*ratio_unsorted; i++)
             {
-                int el = random_generator()% elements;
+                unsigned long long int el = random_generator()% elements;
                 unsigned int pos = random_generator() % elements;
                 element elmt(el);
                 element elmt2(el);
@@ -749,27 +750,27 @@ int main(int argc, char** argv) {
             }
             break;
         case 'h':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i));
                 test_data_sorted[j].push_back(element(i));
             }
             test_data[j][0] = 0;
             test_data[j][1] = 1;
-            for (int k = 1; k < elements / 2; k++)
+            for (unsigned long long int k = 1; k < elements / 2; k++)
             {
                 test_data[j][k + 1] = 2 * k;
                 test_data[j][elements / 2 + k] = 2 * k + 1;
             }
             break;
         case 'i':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i));
                 test_data_sorted[j].push_back(element(i));
             }
             break;
         case 'm':
         case 'n':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i % modulo));
                 test_data_sorted[j].push_back(element(i % modulo));
             }
@@ -778,49 +779,49 @@ int main(int argc, char** argv) {
         case 'o':
         case 'p':
         case 'q':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i));
                 test_data_sorted[j].push_back(element(i));
             }
-            for (unsigned int i = 0; i < inversions; i++) {
+            for (unsigned long long int i = 0; i < inversions; i++) {
                 int pos = random_generator() % (elements - 1);
                 std::swap(test_data[j][pos], test_data[j][pos + 1]);
                 std::swap(test_data_sorted[j][pos], test_data_sorted[j][pos + 1]);
             }
             break;
         case 'r':		
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i));
                 test_data_sorted[j].push_back(element(i));
             }
             std::shuffle(test_data[j].begin(), test_data[j].end(), random_generator);
             break;
         case 's':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i % modulo));
                 test_data_sorted[j].push_back(element(i % modulo));
             }
             break;
         case 't':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element((i + offset) % elements));
                 test_data_sorted[j].push_back(element((i + offset) % elements));
             }
             break;
         case 'u':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i / (elements / 2)));
                 test_data_sorted[j].push_back(element(i / (elements / 2)));
             }
             break;
         case 'v':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element(i / modulo));
                 test_data_sorted[j].push_back(element(i / modulo));
             }
             break;
         case 'w':
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 temp = ((long long int)i*(long long int)i) % modulo_power_2;
                 temp = ((long long int)temp*(long long int)temp) % modulo_power_2;
                 test_data[j].push_back(element((offset_zw + (long long int)temp*(long long int)temp) % modulo_power_2));
@@ -829,7 +830,7 @@ int main(int argc, char** argv) {
             break;
         case 'z':
             unsigned long long int offset_zw = modulo_power_2 / 2;
-            for (int i = 0; i < elements; i++) {
+            for (unsigned long long int i = 0; i < elements; i++) {
                 test_data[j].push_back(element((offset_zw + (long long int)i*(long long int)i) % modulo_power_2));
                 test_data_sorted[j].push_back(element((offset_zw + (long long int)i*(long long int)i) % modulo_power_2));
             }

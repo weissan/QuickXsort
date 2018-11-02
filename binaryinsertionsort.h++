@@ -25,6 +25,29 @@ namespace binaryinsertionsort {
     }
 
     template<typename iter, typename Compare>
+    void sort_branchless(iter begin, iter end, Compare less)
+    {
+        int number = end - begin;
+        for (int i = 1; i < number; i++)
+        {
+            int left = 0;
+
+            int length = i + 1;
+
+            while (length > 1) {
+                int half = (length + 1 ) / 2;
+                int mid = left + half - 1;
+                left += (less(begin[mid], begin[i])) ? (length - half) : 0;
+                length = half;
+
+            }
+            for (int j = i; j > left; --j)
+                std::swap(begin[j - 1], begin[j]);
+        }
+    }
+
+
+    template<typename iter, typename Compare>
     void sortswap(iter begin, iter end, iter target, Compare less)
     {
         using t = typename std::iterator_traits<iter>::value_type;
