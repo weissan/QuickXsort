@@ -17,8 +17,7 @@
 
 #include "insertionsort.h"
 #include "median.h"
-
-#include "quicksort.h"
+#include "partition_stl.h"
 
 
 #ifndef MEASURE_COMPARISONS
