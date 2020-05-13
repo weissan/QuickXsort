@@ -1195,7 +1195,9 @@ void sort_hybrid(iter begin, iter end, Compare less) {
 #endif
             //pivot = median::median_of_medians_partition_ninther<Partitioner, iter, Compare>(begin, end, 0.5, less);
 
+#ifdef PARTIAL_SORT_COUNT	    
             partial_sort_count++;
+#endif
 
 
 
@@ -1332,7 +1334,9 @@ void sort_hybrid_Mo3(iter begin, iter end, Compare less) {
 #endif
             //pivot = median::median_of_medians_partition_ninther<Partitioner, iter, Compare>(begin, end, 0.5, less);
 
+#ifdef PARTIAL_SORT_COUNT	    
             partial_sort_count++;
+#endif
 
 
             pivot = partition::Stl_partition_median_of_medians_of_3_5_left_right<true, iter, Compare>::partition(begin, end, less, inner_array, pivot_width);
