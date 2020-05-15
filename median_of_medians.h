@@ -318,7 +318,7 @@ namespace median {
 
         //iter placeit = begin + 10;
 
-        iter pivot = begin + ratio * (placeit - begin);
+        iter pivot = begin + static_cast<size_t>(ratio * (placeit - begin));
         kth_element<Partitioner>(begin, pivot, placeit, less);
         //std::iter_swap(placeit - 1, end - 1);
 
